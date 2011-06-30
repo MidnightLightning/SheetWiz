@@ -4,7 +4,10 @@ set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
 require_once('Zend/Registry.php');
 require_once('Zend/Db.php');
+require_once('controller.php'); // Controller base class
+require_once('view.php'); // Smarty view class
 
+// Database setup
 $db = Zend_Db::factory('Pdo_Sqlite', array(
 	'dbname' => dirname(__FILE__).'/sheetwiz.db',
 ));
@@ -28,3 +31,7 @@ if (!in_array('users', $tables)) {
 
 Zend_Registry::set('dbAdapter', $db);
 unset($db); // Don't keep global version around
+
+// Global variables
+Zend_Registry::set('app_root', dirname(dirname(__FILE__)));
+Zend_Registry::set('web_root', '');
