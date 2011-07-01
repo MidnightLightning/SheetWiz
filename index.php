@@ -18,6 +18,7 @@ if (!file_exists($controller_file)) {
 	$v = new View(); // Instance Smarty class
 	$v->assign('errCode', 'Controller not found');
 	$v->assign('errText', 'No such Controller as "'.$CONTROLLER.'" ('.$controller_file.')');
+	$v->clearCache('error.tpl'); // Cached error messages? What good are those?!?
 	$v->display('error.tpl');
 	exit;
 }
@@ -42,6 +43,7 @@ if (in_array($request_method, $c_methods)) {
 		$v = new View(); // Instance Smarty class
 		$v->assign('errCode', 'Action not found');
 		$v->assign('errText', '"'.$CONTROLLER.'" has no page "'.$PAGE.'"');
+		$v->clearCache('error.tpl'); // Cached error messages? What good are those?!?
 		$v->display('error.tpl');
 	}
 }

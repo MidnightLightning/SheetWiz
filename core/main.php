@@ -35,3 +35,4 @@ unset($db); // Don't keep global version around
 // Global variables
 Zend_Registry::set('app_root', dirname(dirname(__FILE__)));
 Zend_Registry::set('web_root', '');
+Zend_Registry::set('dbSalt', 'uxbqaCLmwcU2sHxP'); // Get your own at https://www.random.org/passwords/?num=5&len=16&format=html&rnd=new

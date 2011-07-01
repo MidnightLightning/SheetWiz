@@ -20,6 +20,20 @@ class ControllerClass {
 		} else {
 			$this->view->display($CONTROLLER.'_'.$tpl.'.tpl'); // Normal, cached display
 		}
-		exit;		
+		exit;
+	}
+
+	/**
+	 * Simple method to error out to a global error page
+	 *
+	 * Call the global 'error.tpl' page (rather than $CONTROLLER_error.tpl) with the given error message
+	 */
+	protected function _error($code, $str) {
+		header("HTTP/1.0 500 Internal Server Error"); // This is our fault...
+		$this->view->assign('errCode', $code);
+		$this->view->assign('errText', $str);
+		$this->view->clearCache('error.tpl'); // Cached error messages? What good are those?!?
+		$this->view->display('error.tpl');
+		exit;
 	}
 }
