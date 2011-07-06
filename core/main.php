@@ -4,6 +4,10 @@ set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 
 require_once('Zend/Registry.php');
 require_once('Zend/Db.php');
+require_once('Zend/Auth.php');
+require_once('Zend/Auth/Adapter/DbTable.php');
+require_once('Zend/Session.php');
+
 require_once('controller.php'); // Controller base class
 require_once('view.php'); // Smarty view class
 
@@ -31,6 +35,9 @@ if (!in_array('users', $tables)) {
 
 Zend_Registry::set('dbAdapter', $db);
 unset($db); // Don't keep global version around
+
+// Session management
+Zend_Session::setOptions(array('name' => 'sheetwiz_session'));
 
 // Global variables
 Zend_Registry::set('app_root', dirname(dirname(__FILE__)));

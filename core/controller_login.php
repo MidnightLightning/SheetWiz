@@ -21,6 +21,15 @@ class Controller extends ControllerClass {
 			// Login succeeded
 			// Zend_Auth::getInstance()->getIdentity() = username
 			// Zend_Auth::hasIdentity() = true
+			
+			if (!empty($_POST['redirect'])) {
+				// Redirect to that page
+				header("Location: {$_POST['redirect']}");
+				exit;
+			}
+			
+			$this->view->assign('message', 'Logged in successfully');
+			$this->display('thanks', false);
 		}
 		$this->display('index', false);
 	}
@@ -41,6 +50,12 @@ class Controller extends ControllerClass {
 			// Verify passwords match
 			if ($_POST['passwd'] != $_POST['passwd_verify']) {
 				$this->view->assign('error', 'Passwords don\'t match');
+				$this->display('register', false);
+			}
+			
+			// Verify password complexity
+			if (strlen($_POST['passwd']) < 3) {
+				$this->view->assign('error', 'Password is too short');
 				$this->display('register', false);
 			}
 			
