@@ -13,7 +13,17 @@ class View extends Smarty {
 		$this->compile_check = true; // Check for all modifications
 		
 		// Set default variables
-		$this->assign('app_name', 'SheetWiz');
-		$this->assign('web_root', Zend_Registry::get('web_root'));
+		$this->app_name = 'SheetWiz';
+		$this->web_root = Zend_Registry::get('web_root');
+	}
+	
+	/**
+	 * Use magic method for easy variable assigning
+	 *
+	 * Smarty uses the assign() function to save variables for display in a template,
+	 * though for ease-of-use we'll provide a magic method to make shorter code.
+	 */
+	public function __set($name, $value) {
+		$this->assign($name, $value);
 	}
 }

@@ -5,9 +5,9 @@ class ControllerClass {
 	
 	function __construct() {
 		$this->view = new View(); // Instance Smarty class
-		$this->view->assign('controller', Zend_Registry::get('CONTROLLER'));
-		$this->view->assign('page', Zend_Registry::get('PAGE'));
-		$this->view->assign('web_root', Zend_Registry::get('web_root'));
+		$this->view->controller = Zend_Registry::get('CONTROLLER');
+		$this->view->page = Zend_Registry::get('PAGE');
+		$this->view->web_root = Zend_Registry::get('web_root');
 	}
 	
 	function display($tpl, $caching = false) {
@@ -30,8 +30,8 @@ class ControllerClass {
 	 */
 	protected function _error($code, $str) {
 		header("HTTP/1.0 500 Internal Server Error"); // This is our fault...
-		$this->view->assign('errCode', $code);
-		$this->view->assign('errText', $str);
+		$this->view->errCode = $code;
+		$this->view->errText = $str;
 		$this->view->clearCache('error.tpl'); // Cached error messages? What good are those?!?
 		$this->view->display('error.tpl');
 		exit;
