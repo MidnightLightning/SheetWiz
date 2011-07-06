@@ -47,7 +47,7 @@ class Controller extends ControllerClass {
 			// Add the user
 			$rs = $db->insert('users', array(
 				'username' => $_POST['username'],
-				'passwd' => md5($_POST['username'].Zend_Registry::get('passwdSalt'))
+				'passwd' => md5($_POST['passwd'].Zend_Registry::get('passwdSalt'))
 			));
 			if ($rs != 0) {
 				// Successfully inserted
