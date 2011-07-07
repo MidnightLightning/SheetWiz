@@ -1,4 +1,4 @@
-{extends file="layout.tpl"}
-{block name="body"}
-<h2>{$errCode}</h2><p>{$errText}</p>
-{/block}
+{extends file="layout_dialog.tpl"}
+{block name="page_title" append}- Error{/block}
+{block name="title"}Error: {$errCode}{/block}
+{block name="text"}{$errText}{/block}
