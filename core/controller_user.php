@@ -1,7 +1,9 @@
 <?php
 
 class Controller extends ControllerClass {
-	function page_index() {
+	function page_login() {
+		if ($_GET['redirect'] == Zend_Registry::get('web_root').'/index.php/user/logout') $_GET['redirect'] = ''; // Don't enter a logout loop
+		
 		if (isset($_POST['username'])) {
 			// Attempt to login from form data
 			$db = Zend_Registry::get('dbAdapter');
@@ -31,7 +33,7 @@ class Controller extends ControllerClass {
 			$this->view->assign('message', 'Logged in successfully');
 			$this->display('thanks', false);
 		}
-		$this->display('index', false);
+		$this->display('login', false);
 	}
 	
 	function page_register() {
@@ -73,5 +75,13 @@ class Controller extends ControllerClass {
 			}
 		}
 		$this->display('register', false);
+	}
+	
+	function page_logout() {
+		$auth = Zend_Auth::getInstance();
+		$auth->clearIdentity();
+		Zend_Registry::set('cur_user', 'Anonymous'); // Save logged-out status
+		$this->view->assign('cur_user', 'Anonymous');
+		$this->display('logout', false);
 	}
 }
