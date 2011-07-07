@@ -12,18 +12,16 @@
 	<meta name="description" content="{$meta_desc}" />{/if}
 {/block}
 	<link rel="shortcut icon" type="image/x-icon" href="{$web_root}/img/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
 	<link rel="stylesheet" href="{$web_root}/inc/main.css" />
 	{block name='head_content'}{/block}
 </head>
-<body>
-<div id="wrapper">
-<div id="content">
+<body{if !empty($body_class)} class="{$body_class}"{/if}>
+{include file='interface_nav.tpl'}
 {block name="body"}{/block}
-</div>
-</div>
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-<script>!window.jQuery && document.write(unescape('%3Cscript src="{$web_root}inc/jquery-1.6.min.js"%3E%3C/script%3E'))</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="{$web_root}inc/jquery-1.6.2.min.js"%3E%3C/script%3E'))</script>
 {block name='foot_content'}{/block}
 </body>
 </html>
