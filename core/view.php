@@ -15,6 +15,7 @@ class View extends Smarty {
 		// Set default variables
 		$this->app_name = 'SheetWiz';
 		$this->web_root = Zend_Registry::get('web_root');
+		$this->cur_user = Zend_Registry::get('cur_user');
 	}
 	
 	/**

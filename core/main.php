@@ -38,6 +38,13 @@ unset($db); // Don't keep global version around
 
 // Session management
 Zend_Session::setOptions(array('name' => 'sheetwiz_session'));
+$auth = Zend_Auth::getInstance();
+if ($auth->hasIdentity()) {
+	Zend_Registry::set('cur_user', $auth->getIdentity());
+} else {
+	Zend_Registry::set('cur_user', 'Anonymous');
+}
+
 
 // Global variables
 Zend_Registry::set('app_root', dirname(dirname(__FILE__)));
