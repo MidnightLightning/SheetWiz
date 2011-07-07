@@ -3,6 +3,7 @@ body { font-size:12pt; font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
 p { margin-bottom:1.5em; }
 h1,h2,h3,h4,h5,h6 { color:#111; }
 h1,h2 { font-size:2em; line-height:1em; margin-bottom:0.5em; }
+div#content { padding:10px 20px 0; }
 
 /* Clearfix */
 .clearfix:after { content:""; display:block; clear:both; visibility:hidden; height:0; }
@@ -23,12 +24,16 @@ div#top_nav ul.menu li { display:inline; }
 /* Modal Dialog */
 body.modal_dialog { background-color:#999; }
 div#dialog_wrapper { padding:50px 0; }
-div#dialog_wrapper .dialog { width:780px; margin:0 auto; background-color:#FFF; border:solid 1px #CCC; padding:10px;
+div#dialog_wrapper .dialog { width:780px; margin:0 auto; background-color:#FFF; border:solid 0px #CCC; padding:10px;
 	-moz-box-shadow: 5px 5px 10px #333;
 	-webkit-box-shadow: 5px 5px 10px #333;
 	box-shadow: 5px 5px 10px #333;
 	
-	-moz-border-radius:0px 25px 0px 25px;
-	-border-radius: 0px 25px 0px 25px;
+	-moz-border-radius:0px 20px 0px 20px;
+	-border-radius: 0px 20px 0px 20px;
 }
 div#dialog_wrapper .dialog h2 { color:#900; }
+
+/* Table forms */
+table.form th, table.form td { padding:2px 5px; }
+table.form th { font-weight:bold; text-align:right; }
