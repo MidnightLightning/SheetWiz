@@ -1,0 +1,34 @@
+html { height:100%; }
+body { font-size:12pt; font-family: "Helvetica Neue",Arial,Helvetica,sans-serif; line-height:1.5em; height:100%; position:relative; }
+p { margin-bottom:1.5em; }
+h1,h2,h3,h4,h5,h6 { color:#111; }
+h1,h2 { font-size:2em; line-height:1em; margin-bottom:0.5em; }
+
+/* Clearfix */
+.clearfix:after { content:""; display:block; clear:both; visibility:hidden; height:0; }
+* html .clearfix             { zoom:1; } /* IE 6 */
+*:first-child+html .clearfix { zoom:1; } /* IE 7 */
+
+/* Nav Bar */
+div#top_nav { background-color:#444; color:#FFF; border-bottom:solid 2px #CCC; font-size:10pt; padding:5px 5px; line-height:1.1em; }
+div#top_nav h1 { font-size:inherit; color:inherit; font-weight:bold; margin:0; padding:3px 5px; display:inline-block; background-color:#666; }
+div#top_nav a { color:#F63; text-decoration:none; display:inline-block; margin:0 5px; }
+div#top_nav h1 a { color:inherit; }
+
+div#top_nav div.account { float:right; padding-top:2px; }
+
+div#top_nav ul.menu { display:inline; }
+div#top_nav ul.menu li { display:inline; }
+
+/* Modal Dialog */
+body.modal_dialog { background-color:#999; }
+div#dialog_wrapper { padding:50px 0; }
+div#dialog_wrapper .dialog { width:780px; margin:0 auto; background-color:#FFF; border:solid 1px #CCC; padding:10px;
+	-moz-box-shadow: 5px 5px 10px #333;
+	-webkit-box-shadow: 5px 5px 10px #333;
+	box-shadow: 5px 5px 10px #333;
+	
+	-moz-border-radius:0px 25px 0px 25px;
+	-border-radius: 0px 25px 0px 25px;
+}
+div#dialog_wrapper .dialog h2 { color:#900; }
