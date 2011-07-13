@@ -16,10 +16,9 @@ div#top_nav h1 { font-size:inherit; color:inherit; font-weight:bold; margin:0; p
 div#top_nav a { color:#F63; text-decoration:none; display:inline-block; margin:0 5px; }
 div#top_nav h1 a { color:inherit; }
 
-div#top_nav div.account { float:right; padding-top:2px; }
-
 div#top_nav ul.menu { display:inline; }
 div#top_nav ul.menu li { display:inline; }
+div#top_nav table { width:100%; }
 
 /* Modal Dialog */
 body.modal_dialog { background-color:#999; }
