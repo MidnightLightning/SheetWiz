@@ -61,10 +61,17 @@ class Controller extends ControllerClass {
 				$this->display('register', false);
 			}
 			
+			// Verify email is valid
+			if (strlen($_POST['email'] < 3) {
+				$this->view->assign('error', 'Email address is invalid');
+				$this->display('register', false);
+			}
+			
 			// Add the user
 			$rs = $db->insert('users', array(
 				'username' => $_POST['username'],
-				'passwd' => md5($_POST['passwd'].Zend_Registry::get('passwdSalt'))
+				'passwd' => md5($_POST['passwd'].Zend_Registry::get('passwdSalt')),
+				'email' => $_POST['email'],
 			));
 			if ($rs != 0) {
 				// Successfully inserted

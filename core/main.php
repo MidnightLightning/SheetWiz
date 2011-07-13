@@ -24,7 +24,7 @@ $tables = $db->fetchCol($sql);
 
 if (!in_array('users', $tables)) {
 	$sql = "CREATE TABLE {$db->quoteIdentifier('users')} ".
-		"({$db->quoteIdentifier('username')} TEXT, {$db->quoteIdentifier('passwd')} TEXT)";
+		"({$db->quoteIdentifier('username')} TEXT, {$db->quoteIdentifier('passwd')} TEXT, {$db->quoteIdentifier('email')} TEXT)";
 	$db->query($sql);
 	
 	$sql = "CREATE UNIQUE INDEX {$db->quoteIdentifier('username_unique')} ".
