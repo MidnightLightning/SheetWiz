@@ -62,7 +62,7 @@ class Controller extends ControllerClass {
 			}
 			
 			// Verify email is valid
-			if (strlen($_POST['email'] < 3) {
+			if (strlen($_POST['email']) < 3) {
 				$this->view->assign('error', 'Email address is invalid');
 				$this->display('register', false);
 			}
