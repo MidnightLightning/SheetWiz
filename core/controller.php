@@ -11,14 +11,14 @@ class ControllerClass {
 	}
 	
 	function display($tpl, $caching = false) {
-		$CONTROLLER = Zend_Registry::get('CONTROLLER');
+		if (substr($tpl, -4) != '.tpl') $tpl = Zend_Registry::get('CONTROLLER').'_'.$tpl.'.tpl';
 		if ($caching === false) {
 			$this->view->clearCache($tpl); // Destroy cache before displaying
-			$this->view->display($CONTROLLER.'_'.$tpl.'.tpl');
+			$this->view->display($tpl);
 		} elseif ($caching !== true) {
-			$this->view->display($CONTROLLER.'_'.$tpl.'.tpl', $caching); // use value of $caching as unique ID for this render
+			$this->view->display($tpl, $caching); // use value of $caching as unique ID for this render
 		} else {
-			$this->view->display($CONTROLLER.'_'.$tpl.'.tpl'); // Normal, cached display
+			$this->view->display($tpl); // Normal, cached display
 		}
 		exit;
 	}
@@ -32,8 +32,7 @@ class ControllerClass {
 		header("HTTP/1.0 500 Internal Server Error"); // This is our fault...
 		$this->view->errCode = $code;
 		$this->view->errText = $str;
-		$this->view->clearCache('error.tpl'); // Cached error messages? What good are those?!?
-		$this->view->display('error.tpl');
+		$this->display('error.tpl', false);
 		exit;
 	}
 }
