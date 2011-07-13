@@ -37,7 +37,7 @@ abstract class CharClass {
 		}
 	}
 	
-	final public function &get($name) {
+	final public function get($name) {
 		return (array_key_exists($name, $this->_data))? $this->_data[$name] : null;
 	}
 	
