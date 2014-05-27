@@ -1,0 +1,12 @@
+{% extends "layout.twig" %}
+{% set meta_desc = 'Pencil-and-paper RPG character sheets, in the cloud!' %}
+{% block title %}SheetWiz{% endblock %}
+{% block head %}
+	{{ parent() }}
+	<link rel="sitemap" type="application/xml" title="Sitemap" href="{{ app.request.basepath }}/sitemap" />
+	<style>
+	</style>
+{% endblock %}
+{% block body %}
+<h1>Hello World!</h1>
+{% endblock %}

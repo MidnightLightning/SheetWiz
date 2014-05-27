@@ -1,1 +1,2 @@
-core/sheetwiz.db
+/vendor/
+.vagrant

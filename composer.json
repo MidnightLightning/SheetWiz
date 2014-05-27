@@ -1,0 +1,20 @@
+{
+    "authors": [
+        {
+            "email": "boydb@midnightdesign.ws", 
+            "name": "Brooks Boyd"
+        }
+    ], 
+    "autoload": {
+        "psr-0": {
+            "SheetWiz": "src/"
+        }
+    }, 
+    "description": "Pencil-and-paper RPG sheets, in the cloud!", 
+    "name": "midnightdesign/sheet-wiz", 
+    "require": {
+        "guzzle/silex-provider": "~1.0", 
+        "silex/silex": "~1.2", 
+        "twig/twig": "1.*"
+    }
+}

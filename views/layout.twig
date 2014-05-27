@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% block head %}<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>{% block title %}SheetWiz{% endblock %}</title>
+	<link href="{{ app.request.basepath }}/inc/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	<link href="{{ app.request.basepath }}/inc/print.css" media="print" rel="stylesheet" type="text/css" />
+	{% if meta_desc is defined %}<meta name="description" content="{{ meta_desc }}" />
+	{% endif %}<meta name="ROBOTS" content="{{ meta_robots|default('INDEX,FOLLOW') }}" />
+	
+	<script type="text/javascript">
+		sw = {}; // Namespace container
+	</script>
+	{% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %}	
+{# Grab Google CDN's jQuery. fall back to local if necessary #}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript">!window.jQuery && document.write(unescape('%3Cscript type="text/javascript" src="{{ app.request.basepath }}/inc/jquery-2.1.0.min.js"%3E%3C\/script%3E'))</script>
+{% block tail %}{% endblock %}
+</body>
+</html>
