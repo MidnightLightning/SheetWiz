@@ -11,6 +11,26 @@
 	
 	<script type="text/javascript">
 		sw = {}; // Namespace container
+		sw.authHeader = "Basic "+btoa("{{ app['sw.reader.user'] }}:{{ app['sw.reader.pass'] }}");
+		sw.fetch = function fetch(options) {
+			var defaults = {
+				url:'',
+				success: function() {},
+				error: function() {},
+				complete: function() {}
+			};
+			options = jQuery.extend({}, defaults, options);
+			jQuery.ajax({
+				url: 'https://midnight.cloudant.com/sheetwhiz/'+options.url,
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("Authorization", sw.authHeader);
+				},
+				dataType: 'json',
+				success: options.success,
+				error: options.error,
+				complete: options.complete
+			});
+		};
 	</script>
 	{% endblock %}
 </head>

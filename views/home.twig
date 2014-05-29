@@ -9,4 +9,27 @@
 {% endblock %}
 {% block body %}
 <h1>Hello World!</h1>
+<ul id="characters"></ul>
+{% endblock %}
+{% block tail %}
+<script>
+
+
+$(document).ready(function() {
+  sw.fetch({
+    url:'_design/characters/_view/name',
+    success: function(data, status, xhr) {
+      var $list = $('#characters');
+      for (var i = 0; i < data.rows.length; i++) {
+        var c = data.rows[i];
+        var uri = '/character/'+c.id;
+        $list.append('<li><a href="'+uri+'">'+c.key+'</a> ('+c.value.race+' '+c.value.class+')');
+      }
+    },
+    error: function(xhr, status, error) {
+      console.log(xhr, status, error);
+    }
+  });
+});
+</script>
 {% endblock %}

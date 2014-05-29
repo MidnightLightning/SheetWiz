@@ -12,6 +12,9 @@ $app['twig']->addFilter(new Twig_SimpleFilter('booleanOut', array('SheetWiz\Base
 
 $app->register(new Guzzle\GuzzleServiceProvider());
 
+$app['sw.reader.user'] = 'pendiskinglincringrebehe'; // Read-only access to SheetWiz database
+$app['sw.reader.pass'] = 'e2horxfjutDbvFCIo7WPdMhO';
+
 $app->get('/', function() use ($app) {
 	return $app->redirect('/home');
 });
