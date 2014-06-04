@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="sheetWizApp">
 <head>
 {% block head %}<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -8,37 +8,13 @@
 	<link href="{{ app.request.basepath }}/inc/print.css" media="print" rel="stylesheet" type="text/css" />
 	{% if meta_desc is defined %}<meta name="description" content="{{ meta_desc }}" />
 	{% endif %}<meta name="ROBOTS" content="{{ meta_robots|default('INDEX,FOLLOW') }}" />
-	
-	<script type="text/javascript">
-		sw = {}; // Namespace container
-		sw.authHeader = "Basic "+btoa("{{ app['sw.reader.user'] }}:{{ app['sw.reader.pass'] }}");
-		sw.fetch = function fetch(options) {
-			var defaults = {
-				url:'',
-				success: function() {},
-				error: function() {},
-				complete: function() {}
-			};
-			options = jQuery.extend({}, defaults, options);
-			jQuery.ajax({
-				url: 'https://midnight.cloudant.com/sheetwhiz/'+options.url,
-				beforeSend: function(xhr) {
-					xhr.setRequestHeader("Authorization", sw.authHeader);
-				},
-				dataType: 'json',
-				success: options.success,
-				error: options.error,
-				complete: options.complete
-			});
-		};
-	</script>
+	{# Grab Google CDN's AngularJS #}
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+	<script src="{{ app.request.basepath }}/inc/app.js"></script>
+	<script src="{{ app.request.basepath }}/inc/controllers.js"></script>
 	{% endblock %}
 </head>
 <body>
-{% block body %}{% endblock %}	
-{# Grab Google CDN's jQuery. fall back to local if necessary #}
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-<script type="text/javascript">!window.jQuery && document.write(unescape('%3Cscript type="text/javascript" src="{{ app.request.basepath }}/inc/jquery-2.1.0.min.js"%3E%3C\/script%3E'))</script>
-{% block tail %}{% endblock %}
+{% block body %}{% endblock %}
 </body>
 </html>
