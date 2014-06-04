@@ -12,6 +12,11 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 	<script src="{{ app.request.basepath }}/inc/app.js"></script>
 	<script src="{{ app.request.basepath }}/inc/controllers.js"></script>
+	<script>
+	sw = {
+		authHeader: "Basic "+btoa("{{ app['sw.reader.user']}}:{{ app['sw.reader.pass'] }}")
+	};
+	</script>
 	{% endblock %}
 </head>
 <body>
